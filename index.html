@@ -41,7 +41,7 @@
   nav{position:sticky;top:0;z-index:20;background:rgba(247,244,250,.86);
     backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
     font-family:var(--font-sans);}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:80px;}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px;}
   .brand{display:flex;align-items:center;gap:11px;font-weight:600;letter-spacing:.02em;}
   .brand svg{display:block;}
   .brand small{font-family:"IBM Plex Mono",monospace;font-weight:400;color:var(--grey);
@@ -107,7 +107,7 @@
 
   /* stats bar */
   .stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-    background:var(--paper-2);}
+    background:var(--paper-2);margin-top:80px;}
   .stats-row{display:flex;padding:26px 28px;}
   .stat{flex:1;padding:0 26px;text-align:center;min-width:0;
     display:flex;flex-direction:column;justify-content:center;}
@@ -119,7 +119,7 @@
   .stat-chain{display:block;margin-top:9px;font-family:"IBM Plex Mono",monospace;font-size:.62rem;
     letter-spacing:.05em;text-transform:uppercase;color:var(--berry);}
 
-  section{padding:64px 0;}
+  section{padding:64px 0;scroll-margin-top:140px;}
   .sec-head{max-width:56ch;margin-bottom:34px;}
   .sec-head h2{font-family:var(--font-sans);font-weight:700;font-size:1.9rem;color:var(--plum);
     margin:10px 0 12px;letter-spacing:-.015em;line-height:1.2;}
@@ -178,20 +178,33 @@
   .person-links a{text-decoration:none;color:var(--berry);font-weight:500;}
   .person-links a:hover{text-decoration:underline;}
 
+  .contrib-grid{display:flex;flex-direction:column;gap:16px;margin-top:20px;}
+  .contrib-row{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;}
+  .contrib{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px;
+    width:calc((100% - 32px)/3);display:flex;gap:12px;}
+  .contrib .avatar{width:60px;height:60px;font-size:1rem;}
+  .contrib-body{min-width:0;}
+  .contrib h4{margin:0 0 2px;font-family:var(--font-sans);font-weight:600;font-size:.92rem;color:var(--plum);}
+  .contrib .role{display:block;color:var(--grey);font-size:.66rem;margin-bottom:6px;
+    font-family:"IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.03em;}
+  .contrib p{margin:0;color:var(--grey);font-size:.82rem;}
+
   /* cta */
   .final{text-align:center;padding:72px 0;}
   .final h2{font-family:var(--font-sans);font-size:2rem;color:var(--plum);margin:0 0 10px;font-weight:700;line-height:1.2;}
   .final p{color:var(--grey);max-width:46ch;margin:0 auto 24px;}
 
   footer{border-top:1px solid var(--line);background:var(--paper-2);padding:34px 0;font-family:var(--font-sans);}
-  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
     font-size:.85rem;color:var(--grey);}
   footer a{color:var(--berry);text-decoration:none;}
   .note{font-size:.75rem;color:var(--grey);opacity:.8;}
 
   @media(max-width:820px){
     .hero-grid{grid-template-columns:1fr;gap:34px;}
+    .hero-grid .vault{display:none;}
     .cards,.steps,.rigor-grid,.team-grid{grid-template-columns:1fr;}
+    .contrib{width:100%;}
     .person{flex-direction:column;}
     .navlinks{display:none;}
     .lede{max-width:none;}
@@ -206,7 +219,7 @@
 <nav>
   <div class="wrap">
     <div class="brand">
-      <img src="assets/leftsideACAI.png" alt="ACAI" height="150" style="margin-top:24px;">
+      <img src="assets/leftsideACAI_cropped.png" alt="ACAI" height="47">
     </div>
     <div class="navlinks">
       <a href="#problem">The Gap</a>
@@ -222,7 +235,7 @@
   <div class="wrap hero-grid">
     <div>
       <span class="eyebrow">Open-source clinical analytics</span>
-      <h1>Publication-ready clinical models, <span class="berry">without writing code</span>.</h1>
+      <h1>Applied Clincial <span class="berry">AI Intiative</span></h1>
       <p class="lede">ClinTab-ML, built by the Applied Clinical AI Initiative, turns your dataset into baseline tables, survival analysis, validated risk models, and journal-ready figures, running entirely inside your hospital network.</p>
       <div class="cta-row">
         <a class="btn" href="#" data-repo>View on GitHub</a>
@@ -399,17 +412,16 @@
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">Who's behind this</span>
-      <h2>The team</h2>
-      <p>No marketing department, no faceless "AI lab" — ClinTab-ML is built and maintained by the Applied Clinical AI Initiative, people you can actually email.</p>
+      <h2>The ACAI Team</h2>
+      <p>Solutions for Clinicians from Clinical Teams</p>
     </div>
     <div class="team-grid">
       <div class="person">
-        <!-- replace the initials span with <img src="dharsan.jpg" alt="Dharsan Ravindran"> when a photo is ready -->
-        <div class="avatar"><span>DR</span></div>
+        <div class="avatar"><img src="assets/dharsan.jpg" alt="Dharsan Ravindran" style="transform-origin:51% 31%;transform:translate(-1%,19%) scale(1.6);"></div>
         <div>
           <h3>Dharsan Ravindran</h3>
-          <span class="role mono">PhD Student, Biomedical Engineering · University of Toronto</span>
-          <p>Dharsan is the founder of ACAI. He's a PhD student in biomedical engineering at the University of Toronto with the Holland Bone and Joint Research Program at Sunnybrook Research Institute, researching musculoskeletal health.</p>
+          <span class="role mono">MASc, Biomedical Engineering · University of Toronto</span>
+          <p>Dharsan is the co-founder of ACAI. With a background in computer science, he's pursuing an MASc in biomedical engineering at the University of Toronto with the Holland Bone and Joint Research Program at Sunnybrook Research Institute.</p>
           <div class="person-links">
             <a href="#" data-dharsan-email>Email</a>
             <a href="#" data-dharsan-linkedin>LinkedIn</a>
@@ -418,8 +430,7 @@
         </div>
       </div>
       <div class="person">
-        <!-- replace the initials span with <img src="aazad.jpg" alt="Aazad Abbas"> when a photo is ready -->
-        <div class="avatar"><span>AA</span></div>
+        <div class="avatar"><img src="assets/aazad.jpg" alt="Aazad Abbas" style="transform-origin:49% 33%;transform:translate(1%,17%) scale(3);"></div>
         <div>
           <h3>Aazad Abbas</h3>
           <span class="role mono">Orthopaedic Surgery Resident · University of Toronto</span>
@@ -428,6 +439,34 @@
             <a href="#" data-aazad-email>Email</a>
             <a href="#" data-aazad-linkedin>LinkedIn</a>
             <a href="#" data-aazad-github>GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contrib-grid">
+      <div class="contrib-row">
+        <div class="contrib">
+          <div class="avatar"><img src="assets/robert.jpg" alt="Robert Koucheki"></div>
+          <div class="contrib-body">
+            <h4>Robert Koucheki</h4>
+            <span class="role">Resident Advisor</span>
+            <p>Robert is an MD/MEng orthopaedic surgery resident and PhD candidate at the University of Toronto's Surgeon Scientist Training Program, with 48+ publications spanning AI, VR/AR, sarcoma, and periprosthetic joint infection.</p>
+          </div>
+        </div>
+        <div class="contrib">
+          <div class="avatar"><img src="assets/ali.jpg" alt="Ali Haider"></div>
+          <div class="contrib-body">
+            <h4>Ali Haider</h4>
+            <span class="role">Med Student</span>
+            <p>Ali is a medical student at the University of Toronto's Faculty of Medicine, having completed a BHSc at Queen's University, contributing clinical insight to keep ClinTab-ML grounded in real practice.</p>
+          </div>
+        </div>
+        <div class="contrib">
+          <div class="avatar"><span>KR</span></div>
+          <div class="contrib-body">
+            <h4>Kisaan Ravindran</h4>
+            <span class="role">Developer</span>
+            <p>Kisaan builds and maintains the ACAI website and ACAI products, handling everything from feature builds to squashing bugs behind the scenes.</p>
           </div>
         </div>
       </div>
@@ -450,11 +489,11 @@
 <footer>
   <div class="wrap">
     <div>
-      <div class="brand" style="margin-bottom:6px;">
-        <img src="assets/Acailogo1.png" alt="ACAI" height="20">
-        <span style="font-weight:600;margin-top:6px;">ClinTab-ML</span>
+      <div class="brand" style="margin-bottom:6px;align-items:flex-end;">
+        <img src="assets/Acailogo1.png" alt="ACAI" height="40">
+        <span style="font-weight:600;line-height:1;position:relative;top:-2px;">ClinTab-ML</span>
       </div>
-      <span>Brought to you by the Applied Clinical AI Initiative (ACAI) · open source, Apache-2.0</span>
+      <span>Brought to you by the Applied Clinical AI Initiative (ACAI) · open source, MIT License</span>
     </div>
     <div>
       <a href="#" data-repo>GitHub</a> &nbsp;·&nbsp;
